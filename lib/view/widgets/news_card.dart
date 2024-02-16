@@ -7,12 +7,12 @@ import 'news_card_full_view.dart';
 class NoteCard extends StatefulWidget {
   const NoteCard(
       {super.key,
-        this.onEditPressed,
-        this.onDeletePressed,
-        required this.category,
-        required this.title,
-        required this.description,
-        required this.date});
+      this.onEditPressed,
+      this.onDeletePressed,
+      required this.category,
+      required this.title,
+      required this.description,
+      required this.date});
 
   final void Function()? onEditPressed;
   final void Function()? onDeletePressed;
@@ -32,25 +32,28 @@ class _NoteCardState extends State<NoteCard> {
       padding: const EdgeInsets.all(10.0),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) {
-              return NoteCardFullView(
-                category: widget.category,
-                title: widget.title,
-                description: widget.description,
-                date: widget.date,
-              );
-            },
-          ));
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return NoteCardFullView(
+                  category: widget.category,
+                  title: widget.title,
+                  description: widget.description,
+                  date: widget.date,
+                );
+              },
+            ),
+          );
         },
         child: Container(
           decoration: BoxDecoration(
               color: primaryColorLight,
               border: Border(
-                  left: BorderSide(
-                    color: primaryColorDark,
-                    width: 7,
-                  )),
+                left: BorderSide(
+                  color: primaryColorDark,
+                  width: 7,
+                ),
+              ),
               borderRadius: BorderRadius.circular(20)),
           padding: EdgeInsets.all(10.0),
           child: Column(
@@ -60,31 +63,34 @@ class _NoteCardState extends State<NoteCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Colors.purple, Colors.red]),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Text(
-                          widget.category,
-                          style: subTextLight,
-                        ),
-                      )),
+                    decoration: BoxDecoration(
+                        gradient:
+                            LinearGradient(colors: [Colors.purple, Colors.red]),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        widget.category,
+                        style: subTextLight,
+                      ),
+                    ),
+                  ),
                   Row(
                     children: [
                       IconButton(
-                          onPressed: widget.onEditPressed,
-                          icon: Icon(
-                            Icons.edit,
-                            color: primaryColorDark,
-                          )),
+                        onPressed: widget.onEditPressed,
+                        icon: Icon(
+                          Icons.edit,
+                          color: primaryColorDark,
+                        ),
+                      ),
                       IconButton(
-                          onPressed: widget.onDeletePressed,
-                          icon: Icon(
-                            Icons.delete,
-                            color: primaryColorDark,
-                          ))
+                        onPressed: widget.onDeletePressed,
+                        icon: Icon(
+                          Icons.delete,
+                          color: primaryColorDark,
+                        ),
+                      )
                     ],
                   ),
                 ],

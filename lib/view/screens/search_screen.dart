@@ -98,14 +98,14 @@ class _SearchScreenState extends State<SearchScreen> {
                               final recentSearch = snapshot.data![index];
                               return Padding(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: InkWell(
                                   onTap: () {
                                     searchController.text = recentSearch;
                                   },
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(recentSearch, style: subTextDark),
                                       IconButton(
@@ -135,8 +135,8 @@ class _SearchScreenState extends State<SearchScreen> {
           } else {
             final filteredNotes = noteController.notes
                 .where((note) => note.title
-                .toLowerCase()
-                .contains(searchController.text.toLowerCase()))
+                    .toLowerCase()
+                    .contains(searchController.text.toLowerCase()))
                 .toList();
             if (filteredNotes.isEmpty) {
               return Center(
@@ -159,12 +159,12 @@ class _SearchScreenState extends State<SearchScreen> {
                           onTap: () async {
                             await Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => NoteCardFullView(
-                                  category: note.category,
-                                  title: note.title,
-                                  description: note.description,
-                                  date: DateFormat('dd-MM-yyyy')
-                                      .format(note.date),
-                                )));
+                                      category: note.category,
+                                      title: note.title,
+                                      description: note.description,
+                                      date: DateFormat('dd-MM-yyyy')
+                                          .format(note.date),
+                                    )));
                             searchScreenController
                                 .addRecentSearch(searchController.text);
                           },
@@ -173,9 +173,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                 color: primaryColorLight,
                                 border: Border(
                                     left: BorderSide(
-                                      color: primaryColorDark,
-                                      width: 7,
-                                    )),
+                                  color: primaryColorDark,
+                                  width: 7,
+                                )),
                                 borderRadius: BorderRadius.circular(20)),
                             padding: EdgeInsets.all(10.0),
                             child: Column(
@@ -183,16 +183,17 @@ class _SearchScreenState extends State<SearchScreen> {
                               children: [
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                         decoration: BoxDecoration(
-                                            gradient: LinearGradient(colors: [
-                                              Colors.purple,
-                                              Colors.red
-                                            ]),
-                                            borderRadius:
-                                            BorderRadius.circular(10)),
+                                          gradient: LinearGradient(colors: [
+                                            Colors.purple,
+                                            Colors.red
+                                          ]),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(5.0),
                                           child: Text(
@@ -214,7 +215,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 ),
                                 SizedBox(
                                   width:
-                                  MediaQuery.of(context).size.width * 0.9,
+                                      MediaQuery.of(context).size.width * 0.9,
                                   child: Text(
                                     note.description,
                                     textAlign: TextAlign.justify,

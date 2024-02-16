@@ -37,13 +37,14 @@ class _SupportScreenState extends State<SupportScreen> {
           children: [
             Container(
               decoration: BoxDecoration(
-                  color: primaryColorLight,
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: LinearGradient(colors: [Colors.purple, Colors.red]),
-                  border: Border.all(
-                    color: primaryColorDark,
-                    width: 3,
-                  )),
+                color: primaryColorLight,
+                borderRadius: BorderRadius.circular(20),
+                gradient: LinearGradient(colors: [Colors.purple, Colors.red]),
+                border: Border.all(
+                  color: primaryColorDark,
+                  width: 3,
+                ),
+              ),
               width: MediaQuery.of(context).size.width * 0.95,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
