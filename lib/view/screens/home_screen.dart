@@ -10,7 +10,8 @@ import 'package:to_do_hive/view/screens/search_screen.dart';
 import '../../controller/note_controller.dart';
 import '../utils/my_colors.dart';
 import '../utils/my_text_styles.dart';
-import '../widgets/news_card.dart';
+
+import '../widgets/notes_card.dart';
 import '../widgets/privacy_policy.dart';
 import '../widgets/support_page.dart';
 import '../widgets/terms-and_conditions.dart';
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: bgColor,
         centerTitle: true,
         title: Text(
-          'NOTELY',
+          'NOTEHIVE',
           style: mainTextDark,
         ),
         actions: [
@@ -75,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
               DrawerHeader(
                 child: Center(
                   child: Text(
-                    'NOTELY',
+                    'NOTEHIVE',
                     style: mainTextLight,
                   ),
                 ),
@@ -140,10 +141,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PrivacyPolicyScreen(),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PrivacyPolicyScreen(),
+                    ),
+                  );
                 },
               ),
             ],
@@ -227,8 +229,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
     await showModalBottomSheet(
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {

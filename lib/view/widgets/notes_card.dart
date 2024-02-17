@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../utils/my_colors.dart';
 import '../utils/my_text_styles.dart';
-import 'news_card_full_view.dart';
+import 'notes_card_full_view.dart';
 
 class NoteCard extends StatefulWidget {
   const NoteCard(

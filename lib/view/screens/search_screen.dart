@@ -8,7 +8,7 @@ import '../../controller/note_controller.dart';
 import '../../controller/search_controller.dart';
 import '../utils/my_colors.dart';
 import '../utils/my_text_styles.dart';
-import '../widgets/news_card_full_view.dart';
+import '../widgets/notes_card_full_view.dart';
 
 class SearchScreen extends StatefulWidget {
   SearchScreen({Key? key}) : super(key: key);
@@ -76,7 +76,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   return Text('Error: ${snapshot.error}');
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                   return Center(
-                      child: Lottie.asset('assets/animation/empty.json'));
+                      child: Center(child: CircularProgressIndicator()));
                 } else {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -140,7 +140,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 .toList();
             if (filteredNotes.isEmpty) {
               return Center(
-                child: Lottie.asset('assets/animation/empty.json'),
+                child: Center(
+                    child: CircularProgressIndicator(
+                  color: Colors.red,
+                )),
               );
             }
             return Padding(
@@ -157,14 +160,17 @@ class _SearchScreenState extends State<SearchScreen> {
                         final note = filteredNotes[index];
                         return InkWell(
                           onTap: () async {
-                            await Navigator.of(context).push(MaterialPageRoute(
+                            await Navigator.of(context).push(
+                              MaterialPageRoute(
                                 builder: (context) => NoteCardFullView(
-                                      category: note.category,
-                                      title: note.title,
-                                      description: note.description,
-                                      date: DateFormat('dd-MM-yyyy')
-                                          .format(note.date),
-                                    )));
+                                  category: note.category,
+                                  title: note.title,
+                                  description: note.description,
+                                  date: DateFormat('dd-MM-yyyy')
+                                      .format(note.date),
+                                ),
+                              ),
+                            );
                             searchScreenController
                                 .addRecentSearch(searchController.text);
                           },
@@ -172,10 +178,11 @@ class _SearchScreenState extends State<SearchScreen> {
                             decoration: BoxDecoration(
                                 color: primaryColorLight,
                                 border: Border(
-                                    left: BorderSide(
-                                  color: primaryColorDark,
-                                  width: 7,
-                                )),
+                                  left: BorderSide(
+                                    color: primaryColorDark,
+                                    width: 7,
+                                  ),
+                                ),
                                 borderRadius: BorderRadius.circular(20)),
                             padding: EdgeInsets.all(10.0),
                             child: Column(
@@ -186,21 +193,21 @@ class _SearchScreenState extends State<SearchScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                        decoration: BoxDecoration(
-                                          gradient: LinearGradient(colors: [
-                                            Colors.purple,
-                                            Colors.red
-                                          ]),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(colors: [
+                                          Colors.purple,
+                                          Colors.red
+                                        ]),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                          note.category,
+                                          style: subTextLight,
                                         ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text(
-                                            note.category,
-                                            style: subTextLight,
-                                          ),
-                                        )),
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 SizedBox(
