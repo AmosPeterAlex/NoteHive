@@ -161,7 +161,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               : value.notes.isEmpty
-                  ? Center(child: Lottie.asset('assets/animation/empty.json'))
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Nothing to show'),
+                          CircularProgressIndicator()
+                        ],
+                      ),
+                    )
                   : Column(
                       children: [
                         Expanded(
