@@ -165,8 +165,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Nothing to show'),
-                          CircularProgressIndicator()
+                          Text(
+                            'Create a New Note',
+                            style: TextStyle(fontSize: 22),
+                          ),
+                          // CircularProgressIndicator()
                         ],
                       ),
                     )
